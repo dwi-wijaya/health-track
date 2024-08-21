@@ -7,7 +7,7 @@
                 </NuxtLink>
             </div>
             <div class="ml-6 mt-5 text-left">
-                <h1 class="text-2xl text-text font-medium mb-1">Trackfitt</h1>
+                <h1 class="text-2xl text-text font-medium mb-1">Trackfit</h1>
                 <p class="text-sm flex items-center gap-2"><i class="text-primary fad fa-mug-hot"></i> <span
                         class="mt-[.125rem]">{{ greetingMessage }}</span>
                 </p>
