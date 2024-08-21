@@ -1,5 +1,12 @@
 export const SIDEBAR_MENU = [
     {
+        link: '/',
+        label: { id: 'Beranda', en: 'Home' },
+        title: { id: 'Beranda', en: 'Home' },
+        icon: 'fa-house', // Category tidak memerlukan ikon khusus
+        type: 'category'
+    },
+    {
         link: 'fitness',
         label: { id: 'Kebugaran', en: 'Fitness' },
         title: { id: 'Kategori Kebugaran', en: 'Fitness Category' },

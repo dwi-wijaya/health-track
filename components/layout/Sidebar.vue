@@ -39,7 +39,7 @@
                             </div>
                         </li>
                         <li v-for="(item, index) in filteredMenuItems" :key="index"
-                            :class="['text-sm w-full group', item.type == 'category' && index != 0 ? 'mt-4' : '']">
+                            :class="['text-sm w-full group', item.type == 'category' && index != 1 ? 'mt-4' : '']">
                             <NuxtLink :to="item.link" :title="item.label.en" :class="[
                                 'flex items-center justify-between w-full transition-300 hover:text-primary',
                                 isActiveRoute(item.link) ? 'text-primary' : '', item.type == 'category' ? 'text-text' : 'text-title'
