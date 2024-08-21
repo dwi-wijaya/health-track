@@ -17,25 +17,32 @@
             </div>
 
             <div class="flex gap-3 flex-col ml-6">
-                <ThemeToggle/>
+                <ThemeToggle />
                 <a href="https://saweria.co/dwiwijaya" target="_blank"
-                class="group flex gap-2 items-center justify-center bg-background border border-stroke px-4 py-3 rounded-2xl text-base hover:text-primary">
-                <i
-                class="fad text-primary text-lg fa-circle-heart group-hover:-rotate-[12deg] transition-300 duration-300 transition-all relative">
-                <i class="animate-ping bg-primary opacity-30 rounded-full absolute inline-flex h-full w-full"></i>
-            </i>
-            Become a Sponsor
-        </a>
+                    class="group flex gap-2 items-center justify-center bg-background border border-stroke px-4 py-3 rounded-2xl text-base hover:text-primary">
+                    <i
+                        class="fad text-primary text-lg fa-circle-heart group-hover:-rotate-[12deg] transition-300 duration-300 transition-all relative">
+                        <i class="animate-ping bg-primary opacity-30 rounded-full absolute inline-flex h-full w-full"></i>
+                    </i>
+                    Become a Sponsor
+                </a>
             </div>
 
             <nav class="nav">
                 <div class="nav__menu p-6 bg-background rounded-l-none rounded-2xl border border-stroke border-l-0">
                     <ul class="flex flex-col items-center gap-y-3">
-                        <li v-for="(item, index) in menuItems" :key="index"
+                        <li class="relative mb-1">
+                            <input v-model="searchQuery" type="text" placeholder="Search"
+                                class="w-full pl-10 pr-4 bg-container py-2 border border-stroke rounded-lg focus:outline-none focus:ring-0 placeholder-text" />
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none ">
+                                <i class="fal fa-search  fa-sm"></i>
+                            </div>
+                        </li>
+                        <li v-for="(item, index) in filteredMenuItems" :key="index"
                             :class="['text-sm w-full group', item.type == 'category' && index != 0 ? 'mt-4' : '']">
                             <NuxtLink :to="item.link" :title="item.label.en" :class="[
                                 'flex items-center justify-between w-full transition-300 hover:text-primary',
-                                isActiveRoute(item.link) ? 'text-primary' : ''
+                                isActiveRoute(item.link) ? 'text-primary' : '', item.type == 'category' ? 'text-text' : 'text-title'
                             ]">
                                 <p class="flex items-center gap-3">
                                     <i v-if="item.type == 'menu'" :class="[
@@ -71,9 +78,21 @@ const sidebarElement = ref(null);
 const toggle = ref(false);
 const currentTime = ref('');
 const greetingMessage = ref('');
+const searchQuery = ref('');
 
 const menuItems = SIDEBAR_MENU
 
+// Computed property untuk memfilter menu
+const filteredMenuItems = computed(() => {
+    if (!searchQuery.value) return SIDEBAR_MENU;
+
+    return SIDEBAR_MENU.filter(item =>
+        (item.label.id.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+        item.label.en.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+        item.title.id.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+        item.title.en.toLowerCase().includes(searchQuery.value.toLowerCase())) && item.type != 'category'
+    );
+});
 
 watch(toggle, (newValue) => {
     handleBodyScroll(newValue);
