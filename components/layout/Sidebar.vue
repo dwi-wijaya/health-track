@@ -17,15 +17,9 @@
             </div>
 
             <div class="flex gap-3 flex-col ml-6">
-                <ThemeToggle />
-                <a href="https://saweria.co/dwiwijaya" target="_blank"
-                    class="group flex gap-2 items-center justify-center bg-background border border-stroke px-4 py-3 rounded-2xl text-base hover:text-primary">
-                    <i
-                        class="fad text-primary text-lg fa-circle-heart group-hover:-rotate-[12deg] transition-300 duration-300 transition-all relative">
-                        <i class="animate-ping bg-primary opacity-30 rounded-full absolute inline-flex h-full w-full"></i>
-                    </i>
-                    Become a Sponsor
-                </a>
+                <ThemeToggle   />
+                <LanguageToggle />
+                
             </div>
 
             <nav class="nav">
@@ -58,6 +52,16 @@
                     </ul>
                 </div>
             </nav>
+            <div class="flex gap-3 flex-col ml-6">
+                <a href="https://saweria.co/dwiwijaya" target="_blank"
+                    class="group flex gap-2 items-center justify-center bg-background border border-stroke px-4 py-3 rounded-2xl text-base hover:text-primary">
+                    <i
+                        class="fad text-primary text-lg fa-circle-heart group-hover:-rotate-[12deg] transition-300 duration-300 transition-all relative">
+                        <i class="animate-ping bg-primary opacity-30 rounded-full absolute inline-flex h-full w-full"></i>
+                    </i>
+                    Become a Sponsor
+                </a>
+            </div>
         </div>
 
 
@@ -73,6 +77,7 @@ import { ref, onMounted, reactive, computed, onBeforeUnmount, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router';
 const route = useRoute();
 import ThemeToggle from './ThemeToggle.vue'
+import LanguageToggle from './LanguageToggle.vue'
 import { SIDEBAR_MENU } from '@/constants/menu'
 const sidebarElement = ref(null);
 const toggle = ref(false);
