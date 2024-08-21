@@ -1,6 +1,12 @@
+<script setup>
+const layout = 'default'
+</script>
+
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    <NuxtLayout :name="layout">
+      <NuxtPage />
+  </NuxtLayout>
   </div>
 </template>

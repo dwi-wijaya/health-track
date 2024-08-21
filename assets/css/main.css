@@ -1,3 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --foreground-color: rgb(89, 103, 122);
+    --background-color: rgb(248, 247, 253);
+    --container-color: rgb(255, 255, 255);
+    --primary-color: rgb(26, 188, 156);
+    --primary-bg: #ff985c4d;
+    --title-color: rgb(55, 67, 86);
+    --text-color: rgb(94, 92, 127);
+    --text-secondary: rgb(103, 117, 134);
+    --stroke-color: #e7e7e7;
+}
+
+.dark {
+    --foreground-color: rgb(143, 162, 187);
+    --background-color: rgb(34, 40, 49);
+    --container-color: rgb(46, 53, 65);
+    --primary-color: rgb(26, 188, 156);
+    --title-color: rgb(189 206 233);
+    --text-color: rgb(164, 181, 208);
+    --text-secondary: rgb(127, 145, 171);
+    --stroke-color: rgb(62, 68, 78);
+
+}
+
+body {
+    color: var(--foreground-color);
+    background: var(--background-color);
+
+}
+
+html {
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    letter-spacing: .3px;
+    font-family: "Onest", sans-serif;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--background-color) inset !important;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--text-color) !important;
+}
+
+@layer utilities {
+    .webkit-box {
+        display: -webkit-box;
+    }
+}
+
+@layer components {
+
+    .base-transition {
+        @apply transition-all duration-300 ease-in-out
+    }
+
+    .card {
+        @apply px-4 py-3 rounded-xl bg-container border border-stroke base-transition
+    }
+
+    .btn {
+        @apply px-5 py-3 leading-4 rounded-md shadow-sm bg-red-500 dark:bg-rose-100 hover:bg-red-600 dark:hover:bg-pink-200 dark:text-red-600 text-red-50 flex gap-2 items-center font-normal w-fit border-primary base-transition
+    }
+
+    .hr {
+        @apply border-stroke my-5;
+    }
+
+    .form-input {
+        @apply border border-stroke bg-container text-text rounded-md py-2 px-3 z-[1] focus-visible: !outline-none;
+    }
+
+    .form-control {
+        @apply relative mb-6 h-16 w-full;
+    }
+
+    .form-group {
+        @apply flex flex-col gap-1
+    }
+
+    .badge {
+        @apply flex gap-2 whitespace-nowrap items-center py-2 px-3 border border-stroke rounded-md bg-container text-text
+    }
+
+    .toggle {
+        @apply top-5 rounded-lg fixed cursor-pointer h-10 w-fit px-3 bg-container text-text border border-stroke flex gap-2 justify-center items-center z-10 transition-all duration-300 ease-in-out;
+    }
+
+    .sidebar {
+        @apply max-h-[100svh] scrollbar-hide overflow-x-auto fixed -left-64 lg:left-0 top-0 bg-container border border-stroke pl-0 p-6 w-64 min-h-screen flex flex-col gap-8 justify-between base-transition text-center z-10 shadow-sm
+    }
+}

@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "nuxt": "^3.12.4",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "@vueuse/core": "^10.11.0",
     "vue": "latest"
   },
   "devDependencies": {
